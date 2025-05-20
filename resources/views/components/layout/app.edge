@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        @vite(['resources/css/app.css'])
+        <title>
+            {{ title || "Catholib" }}
+        </title>
+        @if ($slots.meta)
+            {{{ await $slots.meta() }}}
+        @endif
+    </head>
+    <body>
+        {{{ await $slots.main() }}}
+    </body>
+</html>

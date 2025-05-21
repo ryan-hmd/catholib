@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Contact from './contact.js'
@@ -19,6 +20,12 @@ export default class Parish extends BaseModel {
 
     @column()
     declare dioceseId: number
+
+    @column.dateTime({ autoCreate: true })
+    declare createdAt: DateTime
+
+    @column.dateTime({ autoCreate: true, autoUpdate: true })
+    declare updatedAt: DateTime
 
     @belongsTo(() => Contact)
     declare contact: BelongsTo<typeof Contact>

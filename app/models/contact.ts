@@ -2,6 +2,7 @@ import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
 import type { HasOne } from '@adonisjs/lucid/types/relations'
 import Diocese from './diocese.js'
 import Parish from './parish.js'
+import Profil from './profil.js'
 
 export default class Contact extends BaseModel {
     @column({ isPrimary: true })
@@ -18,4 +19,7 @@ export default class Contact extends BaseModel {
 
     @hasOne(() => Parish)
     declare parish: HasOne<typeof Parish>
+
+    @hasOne(() => Profil)
+    declare profil: HasOne<typeof Profil>
 }

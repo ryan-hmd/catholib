@@ -1,7 +1,4 @@
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import Contact from './contact.js'
-
+import { BaseModel, column } from '@adonisjs/lucid/orm'
 export default class Address extends BaseModel {
     @column({ isPrimary: true })
     declare id: number
@@ -29,7 +26,4 @@ export default class Address extends BaseModel {
 
     @column()
     declare longitude: number
-
-    @belongsTo(() => Contact)
-    declare contact: BelongsTo<typeof Contact>
 }

@@ -1,4 +1,7 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import Diocese from './diocese.js'
+import Parish from './parish.js'
 export default class Address extends BaseModel {
     @column({ isPrimary: true })
     declare id: number
@@ -26,4 +29,10 @@ export default class Address extends BaseModel {
 
     @column()
     declare longitude: number
+
+    @hasOne(() => Diocese)
+    declare diocese: HasOne<typeof Diocese>
+
+    @hasOne(() => Parish)
+    declare parish: HasOne<typeof Parish>
 }

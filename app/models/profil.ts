@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations'
 import Contact from './contact.js'
 import Address from './address.js'
 import Parish from './parish.js'
 import Role from './role.js'
+import Collaborator from './collaborator.js'
 
 export default class Profil extends BaseModel {
     @column({ isPrimary: true })
@@ -60,4 +61,7 @@ export default class Profil extends BaseModel {
 
     @belongsTo(() => Role)
     declare role: BelongsTo<typeof Role>
+
+    @hasOne(() => Collaborator)
+    declare collaborator: HasOne<typeof Collaborator>
 }
